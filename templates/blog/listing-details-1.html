@@ -1,0 +1,230 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+{% block content %}
+        <!--====== End Header Section ======-->
+        <!--====== Start Breadcrumbs section ======-->
+        <section class="page-breadcrumbs page-breadcrumbs-one pt-120 pb-70">
+            <div class="container">
+                <div class="breadcrumbs-wrapper-one">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-12">
+                            <div class="listing-info-name">
+                                <div class="info-name d-flex">
+                                    <div class="thumb">
+                                        <img src="{{object.profile_image.url}}" alt="thumb image">
+                                    </div>
+                                    <div class="content">
+                                        {% comment %} <span class="cat-btn">Restaurant</span> {% endcomment %}
+                                        <h3>{{object.title}}</h3>
+                                        <p><i class="ti-location-pin"></i>{{object.address |striptags}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="listing-info-content">
+                                <div class="content">
+                                    {% if  object.rating >= 4%}
+                                
+                                    <ul class="ratings ratings-four">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{object.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  object.rating >= 3 and object.rating < 4%}
+                                    <ul class="ratings ratings-three">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{object.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  object.rating >= 2 and object.rating < 3%}
+                                    <ul class="ratings ratings-two">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{object.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  object.rating >= 1 and object.rating < 2%}
+                                    <ul class="ratings ratings-one">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{object.reviews}}</a></span></li>
+                                    </ul>
+                                    {% endif %}
+                                    <div class="listing-meta">
+                                        <ul>
+                                            <li class='mb-10'><span><i class="ti-location-pin"></i>{{object.state}}, USA</span></li>
+                                            <li><span><i class="ti-tablet"></i><a href="tel:+982653652-05">{{object.phone}}</a></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="button">
+                                <a href="listing-grid.html" class="icon-btn"><i class="ti-heart"></i></a>
+                                <a href="listing-grid.html" class="icon-btn"><i class="ti-share"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Breadcrumbs section ======-->
+        <!--====== Start Listing Details section ======-->
+        <section class="listing-details-section pt-120 pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="listing-details-wrapper listing-details-wrapper-one">
+                            <div class="listing-content mb-50">
+                                <h3 class="title">Clinic Description</h3>
+                                <p>{{object.description|striptags}}</p>  
+                            </div>
+                            <div class="sidebar-widget-area">
+                                <div class="widget business-hour-widget mb-30">
+                                    <h4 class="widget-title">Business Hour</h4>
+                                    {% comment %} <ul class="time-info">
+                                        <li><span class="day">Monday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Tuesday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Wednesday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Thursday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Friday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Saturday</span><span class="time">08:00 - 21:00</span></li>
+                                        <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    </ul> {% endcomment %}
+                                    <div class="table-responsive">
+                                     <table class='table text-center font-bold'>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Wednesday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Thursday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Friday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Saturday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sunday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Monday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tuesday</td>
+                                                    <td>Open 24 hours</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listing-faq-box mb-50">
+                                <h4 class="title">Asked Question</h4>
+                                <div class="faq-accordian" id="listingFaq">
+                                    <div class="card">
+                                        <a class="card-header" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">How do I Make a regular Table Booking?</a>
+                                        <div id="collapseOne" class="collapse show" data-parent="#listingFaq">
+                                            <div class="card-body">
+                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum viverra cubilia ipsum ut duis amet nullam sit ut ornare mattis urna. Parturient. Aptent erat blandit dolor porta eros mollis hendrerit leo viverra pellentesque fusce.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <a class="collapsed card-header" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false">How can I be certain my booking's been received?</a>
+                                        <div id="collapseTwo" class="collapse" data-parent="#listingFaq">
+                                            <div class="card-body">
+                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum viverra cubilia ipsum ut duis amet nullam sit ut ornare mattis urna. Parturient. Aptent erat blandit dolor porta eros mollis hendrerit leo viverra pellentesque fusce.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <a class="collapsed card-header" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false">How much do I have to pay for my booking?</a>
+                                        <div id="collapseThree" class="collapse" data-parent="#listingFaq">
+                                            <div class="card-body">
+                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum viverra cubilia ipsum ut duis amet nullam sit ut ornare mattis urna. Parturient. Aptent erat blandit dolor porta eros mollis hendrerit leo viverra pellentesque fusce.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <a class="collapsed card-header" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false">What happens restaurant and they don't have my booking?</a>
+                                        <div id="collapseFour" class="collapse" data-parent="#listingFaq">
+                                            <div class="card-body">
+                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum viverra cubilia ipsum ut duis amet nullam sit ut ornare mattis urna. Parturient. Aptent erat blandit dolor porta eros mollis hendrerit leo viverra pellentesque fusce.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="sidebar-widget-area">
+                            <div class="widget reservation-form-widget mb-30">
+                                <h4 class="widget-title">Reservation</h4>
+                                <form>
+                                    <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="{{object.title}}" name="clinic_name" value="{{object.title}}" disabled="disabled">
+                                        <i class="ti-user"></i>
+                                    </div>
+                                    <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="Name" name="name" required>
+                                        <i class="ti-user"></i>
+                                    </div>
+                                    <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                        <i class="ti-mobile"></i>
+                                    </div>
+                                    <div class="form_group">
+                                        <input type="date" class="form_control" placeholder="date" name="date" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <button class="main-btn icon-btn">Book Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                             <div class="widget contact-info-widget mb-30">
+                                <div class="contact-info-widget-wrap">
+                                    <div class="contact-map">
+                                        <iframe src="https://maps.google.com/maps?q={{object.address}}&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                                        <a href="#" class="support-icon"><i class="flaticon-headphone"></i></a>
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h4 class="widget-title">Contact Info</h4>
+                                        <div class="info-list">
+                                            <p><i class="ti-tablet"></i><a href="tel:{{object.phone}}">{{object.phone}}</a></p>
+                                            <p><i class="ti-location-pin"></i>{{object.address |striptags}}</p>
+                                            <p><i class="ti-world"></i><a href="{{object.website}}" target="_blank">{{object.website}}</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Listing Details section ======-->
+ {% endblock content%}

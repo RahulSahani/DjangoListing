@@ -1,0 +1,134 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+{% block content %}
+        <!--====== End Header Section ======-->
+        <!--====== Start Hero Section ======-->
+        <section class="hero-area">
+            <div class="breadcrumbs-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="page-title">
+                                <h1 class="title">Contact us</h1>
+                                <ul class="breadcrumbs-link">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="active">Contact us</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Hero Section ======-->
+        <!--====== Start Contact Section ======-->
+        <section class="contact-section pt-115 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="section-title section-title-left mb-50">
+                            <span class="sub-title">Contact With Us</span>
+                            <h2>How Can We Help You</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="contact-information-list">
+                            <div class="information-item mb-30">
+                                <div class="icon">
+                                    <i class="ti-location-pin"></i>
+                                </div>
+                                <div class="info">
+                                    <h5>Address</h5>
+                                    <p>46 suvastu arcade 3rd Floor
+                                        palace road, London.</p>
+                                </div>
+                            </div>
+                            <div class="information-item mb-30">
+                                <div class="icon">
+                                    <i class="ti-mobile"></i>
+                                </div>
+                                <div class="info">
+                                    <h5>Phone</h5>
+                                    <p><a href="tel:445555552580">44 (555) 555 2580</a></p>
+                                    <p><a href="tel:445555552580">31 (555) 222 2560</a></p>
+                                </div>
+                            </div>
+                            <div class="information-item mb-30">
+                                <div class="icon">
+                                    <i class="ti-email"></i>
+                                </div>
+                                <div class="info">
+                                    <h5>Email</h5>
+                                    <p><a href="mailto:info@fioxen20.com">info@fioxen20.com</a></p>
+                                    <p><a href="mailto:info@fioxen20.com">info@fioxen22.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="contact-wrapper-one mb-30">
+                            <div class="contact-form">
+                                <form  method='post' action='/contact' >
+                                    {% csrf_token %}
+                                    <div class="row">
+                                       
+                                        <div class="col-lg-6">
+                                               
+                                            <div class="form_group" >
+                                                <input type="text" class="form_control" placeholder="First Name" name="fname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <input type="text" class="form_control" placeholder="Last Name" name="lname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <input type="email" class="form_control" placeholder="Email" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <input type="text" class="form_control" placeholder="Subject" name="subject" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <textarea class="form_control" placeholder="Your Message" name="message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <button class="main-btn">Send Message</button>
+                                            </div>
+                                        </div>
+                               
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Contact Section ======-->
+        <!--====== Start Map section ======-->
+        <section class="contact-page-map">
+            <div class="map-box">
+                <iframe src="https://maps.google.com/maps?q=united%state&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+            </div>
+        </section><!--====== End Map section ======-->
+{% endblock content %}
+
+{% comment %} 
+<div class="timeing-list">
+    <h5>Monday<input type="time" style='line' class="time" id="appt" name="appt"> To <input class="time" type="time" id="appt" name="appt"></h5>
+</div> {% endcomment %}

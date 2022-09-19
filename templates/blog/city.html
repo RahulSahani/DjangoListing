@@ -1,0 +1,179 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+{% block content %}
+
+        <!--====== Start Hero Section ======-->
+        <section class="hero-area">
+            <div class="breadcrumbs-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="page-title">
+                                <h1 class="title">Our Blog</h1>
+                                <ul class="breadcrumbs-link">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="active">Our Blog</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section class="cities">
+        <div class="container text-center mt-10 mb-30">
+            <h1 class="display-4">Number of Cities in {{state.stateName}}</h1>
+            <div class="row mt-20">
+
+                {% for city in cities %}
+                <div class="col-sm-3 mb-3 city-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{city.cityName}}</h5>
+                        <a href="#" class="btn btn-primary">View Clinics</a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %} 
+
+            </div>
+
+        </div>
+        <section>
+
+        </section>
+        <!--====== End Hero Section ======-->
+        <!--====== Start Blog Section ======-->
+        <section class="blog-area pt-120 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        {% for list in business %}
+                        <div class="listing-item listing-list-item-two mb-60">
+                            <div class="listing-thumbnail">
+                                <img src="{{list.profile_image.url}}" alt="listing Image">
+                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
+                                    <div class="meta-icon-title d-flex align-items-center">
+                                        <div class="icon">
+                                            <i class="flaticon-chef"></i>
+                                        </div>
+                                        <div class="title">
+                                            <h6>Restaurant</h6>
+                                        </div>
+                                    </div>
+                                    <span class="status st-open">Open</span>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <h3 class="title"><a href="{% url 'listing-details' list.slug %}">{{list.title}}</a></h3>
+                                <div class="ratings">
+                                    {% if  list.rating >= 4%}
+                                
+                                    <ul class="ratings ratings-four">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{list.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  list.rating >= 3 and list.rating < 4%}
+                                    <ul class="ratings ratings-three">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{list.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  list.rating >= 2 and list.rating < 3%}
+                                    <ul class="ratings ratings-two">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{list.reviews}}</a></span></li>
+                                    </ul>
+                                    {% elif  list.rating >= 1 and list.rating < 2%}
+                                    <ul class="ratings ratings-one">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">{{list.reviews}}</a></span></li>
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:{{list.phone}}">{{list.phone}}</a></span>
+                                <div class="listing-meta">
+                                    <ul>
+                                        <li><span><i class="ti-location-pin"></i>{{list.state}}, USA</span></li>
+                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebar-widget-area mb-20">
+                            <div class="widget search-widget mb-30">
+                                <h4 class="widget-title">Search</h4>
+                                <form>
+                                    <div class="form_group">
+                                        <input type="email" class="form_control" placeholder="Search..." name="email" required>
+                                        <i class="ti-location-arrow"></i>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="widget categories-widget mb-30">
+                                <h4 class="widget-title">Categories</h4>
+                                <ul class="categories-nav">
+                                    <li><a href="#">Restaurant <span>(10)</span></a></li>
+                                    <li><a href="#">Museums <span>(12)</span></a></li>
+                                    <li><a href="#">Business <span>(05)</span></a></li>
+                                    <li><a href="#">Tour & Travel <span>(10)</span></a></li>
+                                    <li><a href="#">Uncategory <span>(03)</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="widget recent-post-widget mb-30">
+                                <h4 class="widget-title">Popular Post</h4>
+                                <ul class="recent-post-list">
+                                    <li class="post-thumbnail-content">
+                                        <img src="assets/images/elements/thumb-1.jpg" class="img-fluid" alt="">
+                                        <div class="post-title-date">
+                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
+                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
+                                                tusto scelerisque</a></h6>
+                                        </div>
+                                    </li>
+                                    <li class="post-thumbnail-content">
+                                        <img src="assets/images/elements/thumb-2.jpg" class="img-fluid" alt="">
+                                        <div class="post-title-date">
+                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
+                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
+                                                tusto scelerisque</a></h6>
+                                        </div>
+                                    </li>
+                                    <li class="post-thumbnail-content">
+                                        <img src="assets/images/elements/thumb-3.jpg" class="img-fluid" alt="">
+                                        <div class="post-title-date">
+                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
+                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
+                                                tusto scelerisque</a></h6>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widget add-widget mb-30">
+                                <div class="add-img-box">
+                                    <img src="assets/images/elements/add-1.jpg" alt="Add Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock content %}
