@@ -1,5 +1,5 @@
 from calendar import MONDAY
-from django.shortcuts import render 
+from django.shortcuts import render ,get_object_or_404
 from .models import *
 from django.db.models import Count
 # Create your views here.
@@ -81,16 +81,19 @@ def Blog(request):
 
 
 def State(request ,slug):
-    state = StatePage.objects.filter(slug=slug)
-    cities = City.objects.filter(state=1)
-    business = BusinessDetails.objects.filter(state=1)
+    # state = StatePage.objects.filter(slug=slug)
+    state = get_object_or_404(StatePage, slug=slug)
+    cities = City.objects.filter(state=state.pk)
+    business = BusinessDetails.objects.filter(state=state.pk)
     context = {'state':state , 'cities':cities , 'business':business}
     return render( request, 'blog/state.html', context)
 
 
 
 def city(request , slug):
-    context = {'slug':slug}
+    city = get_object_or_404(City, slug=slug)
+    business = BusinessDetails.objects.filter(state=city.pk)
+    context = {'slug':slug , 'business':business,}
     return render(request, 'blog/city.html', context)
  
 
