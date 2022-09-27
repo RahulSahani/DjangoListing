@@ -3,8 +3,12 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from listing.sitemap import BusinessSitemap
 
-
+sitemaps = {
+        "listing":BusinessSitemap,
+}
 
 from rest_framework.routers import DefaultRouter
 
@@ -30,6 +34,7 @@ urlpatterns = [
         path('about/', TemplateView.as_view(template_name='blog/about.html'), name='about'),
         path('data/', include(router.urls)),
         path('state/<slug:slug>' , views.State , name='state'),
-         path('city/<slug:slug>' , views.city , name='city'),
+        path('city/<slug:slug>' , views.city , name='city'),
+        path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap')
 
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)

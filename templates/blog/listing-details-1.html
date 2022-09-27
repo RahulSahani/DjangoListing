@@ -1,5 +1,9 @@
 {% extends 'partial/base.html' %}
 {% load static %}
+{% block metaTitle %}
+<title>{{object.title}} | Emergencyvet24x7.com</title>
+<meta name="description" content="{{object.title}} , {{object.state}}">
+{% endblock metaTitle %}
 {% block content %}
         <!--====== End Header Section ======-->
         <!--====== Start Breadcrumbs section ======-->
@@ -90,7 +94,7 @@
                         <div class="listing-details-wrapper listing-details-wrapper-one">
                             <div class="listing-content mb-50">
                                 <h3 class="title">Clinic Description</h3>
-                                <p>{{object.description|striptags}}</p>  
+                                <p>{{object.description|safe}}</p>  
                             </div>
                             <div class="sidebar-widget-area">
                                 <div class="widget business-hour-widget mb-30">
@@ -105,8 +109,11 @@
                                         <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
                                     </ul> {% endcomment %}
                                     <div class="table-responsive">
-                                        {{object.timing}}
-                                     {% comment %} <table class='table text-center font-bold'>
+                                     
+                                        {{object.time |safe}}
+                                        
+                                       
+                                    {% comment %} <table class='table text-center font-bold'>
                                             <tbody>
                                                 <tr>
                                                     <td>Wednesday</td>
@@ -137,7 +144,7 @@
                                                     <td>Open 24 hours</td>
                                                 </tr>
                                             </tbody>
-                                        </table> {% endcomment %}
+                                        </table>  {% endcomment %}
                                     </div>
                                 </div>
                             </div>
@@ -184,21 +191,22 @@
                         <div class="sidebar-widget-area">
                             <div class="widget reservation-form-widget mb-30">
                                 <h4 class="widget-title">Reservation</h4>
-                                <form>
+                                <form method='post' action='/'>
+                                    {% csrf_token %}
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="{{object.title}}" name="clinic_name" value="{{object.title}}" disabled="disabled">
+                                        <input type="text" class="form_control" placeholder="{{object.title}}" name="clinicName" value="{{object.title}}" disabled="disabled">
                                         <i class="ti-user"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="Name" name="name" required>
+                                        <input type="text" class="form_control" placeholder="Name" name="clientName" required>
                                         <i class="ti-user"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                        <input type="text" class="form_control" placeholder="Phone" name="clientPhone" required>
                                         <i class="ti-mobile"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="date" class="form_control" placeholder="date" name="date" required>
+                                        <input type="date" class="form_control" placeholder="date" name="AppointmentDate" required>
                                     </div>
 
                                     <div class="form_group">

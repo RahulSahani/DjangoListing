@@ -10,7 +10,7 @@ def home_view(request):
     city_count = StatePage.objects.annotate(num_of_city=Count('city'))
     # states = StatePage.objects.all()
     blogPosts = Post.objects.filter(postStatus = 1)
-    business = BusinessDetails.objects.all()
+    business = BusinessDetails.objects.all()[0:6]
     context = {'blogPosts':blogPosts , 'business':business , 'cities':city_count}
     return render( request, 'blog/index.html', context)
 
@@ -19,19 +19,19 @@ def single_view(request , slug):
     context ={'blogPost':blogPost}
     return render( request, 'blog/post.html', context)
 
-def Contact_us( requests):
-    if requests.method == 'POST':
-        name = requests.POST['fname'] + ' ' + requests.POST['lname']
-        phone = requests.POST['phone'] 
-        email = requests.POST['email'] 
-        subject = requests.POST['subject'] 
-        message = requests.POST['message'] 
+def Contact_us( request):
+    if request.method == 'POST':
+        name = request.POST['fname'] + ' ' + request.POST['lname']
+        phone = request.POST['phone'] 
+        email = request.POST['email'] 
+        subject = request.POST['subject'] 
+        message = request.POST['message'] 
         print(name, phone, email, subject, message )
         contact = ContactUs(name=name, phone=phone, email=email, subject=subject , message=message)
         contact.save()
 
     context = {}
-    return render( requests, 'blog/contact.html', context)
+    return render( request, 'blog/contact.html', context)
 
 # def Listing_Details(request , slug):
 #     business = BusinessDetails.objects.get(slug=slug)
@@ -69,9 +69,9 @@ def Add_listing(request):
     context = {}
     return render( request, 'blog/add-listing.html', context)
 
-# def About_us( requests):
+# def About_us( request):
 #     context = {}
-#     return render( requests, 'blog/about.html', context)
+#     return render( request, 'blog/about.html', context)
 
 
 def Blog(request):
@@ -92,11 +92,24 @@ def State(request ,slug):
 
 def city(request , slug):
     city = get_object_or_404(City, slug=slug)
-    business = BusinessDetails.objects.filter(state=city.pk)
-    context = {'slug':slug , 'business':business,}
+    business = BusinessDetails.objects.filter(city=city.pk)
+    context = {'city':city , 'business':business,}
     return render(request, 'blog/city.html', context)
  
 
+
+def Leads( request):
+    if request.method == 'POST':
+        clinicName = request.POST['clinicName'] 
+        clientName = request.POST['clientName'] 
+        clientPhone = request.POST['clientPhone'] 
+        AppointmentDate = request.POST['AppointmentDate'] 
+        leads = LeadsForClinic(clinicName=clinicName, clientName=clientName, clientPhone=clientPhone, AppointmentDate=AppointmentDate)
+        print(clinicName, clientName, clientPhone)
+        leads.save()
+
+    context = {}
+    return render( request, 'blog/index.html', context)
 
 
 

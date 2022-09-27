@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 1
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +43,10 @@ INSTALLED_APPS = [
     'ckeditor',
     'import_export',
     'rest_framework',
+    'django_extensions',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    
 ]
 
 MIDDLEWARE = [

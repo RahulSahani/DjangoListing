@@ -8,6 +8,7 @@ admin.site.register(StatePage)
 admin.site.register(BlogCategory)
 admin.site.register(Post)
 admin.site.register(ContactUs)
+admin.site.register(LeadsForClinic)
 @admin.register(City)
 class Cities(ImportExportModelAdmin):
     pass

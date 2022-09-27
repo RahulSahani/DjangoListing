@@ -1,5 +1,10 @@
 {% extends 'partial/base.html' %}
 {% load static %}
+
+
+{% block metaTitle %}
+<title>24/7 Emergrncy Vet</title>
+{% endblock metaTitle %}
 {% block content %}
         <!--====== End Header Section ======-->
         <!--====== Start Hero Section ======-->
@@ -9,9 +14,9 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="hero-content">
-                                <h1>Dream Explore
-                                    Discover</h1>
-                                <h3>People Don’t Take,Trips Take People</h3>
+                                <h1>24/7 Emergrncy Vet
+                                    </h1>
+                                <h3>Find The Emergency Animal Clinic Easily</h3>
                                 <div class="hero-search-wrapper">
                                     <form>
                                         <div class="row">
@@ -35,7 +40,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <p class="tags"><span>Popular:</span><a href="#">Saloon</a>,<a href="#">Restaurant</a>,<a href="#">Game</a>,<a href="#">Counter</a>,<a href="#">Train Station</a>,<a href="#">Parking</a>,<a href="#">Shooping</a></p>
+                                <p style="font-size:18px; line-height:40px;color:black"><strong>Looking for an emergency vet? Look no further than the 24/7 Emergency Vet.</br> We are here to help you and your pet in any way possible.</br> We offer a wide range of services, including but not limited to:</br> emergency care, surgery, and more. </br>We are always here for you and your pet,</br> no matter what time of day or night it is.</strong</p>
                             </div>
                         </div>
                     </div>
@@ -215,15 +220,14 @@
         <!--====== End Listing Section ======-->
         <!--====== Start offer Section ======-->
         <section class="cta-area">
-            <div class="cta-wrapper-one bg_cover" style="background-image: url(assets/images/bg/cta-bg-1.jpg);">
+            <div class="cta-wrapper-one bg_cover" style="background-image: url('{% static 'assets/images/bg/bg.jpg' %}');">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="cta-content-box text-center">
                                 <img src="{% static 'assets/images/icon-1.png'%}" alt="offer icon">
-                                <h2>Splash Yourself Bigger
-                                    Offer on Everyday</h2>
-                                <a href="how-work.html" class="main-btn icon-btn">Explore Now</a>
+                                <h2>Find The Emergency Animal Clinics With Best Services</h2>
+                                <a href="{%url 'home' %}" class="main-btn icon-btn">Explore Emergency Animal Clinics</a>
                             </div>
                         </div>
                     </div>
@@ -324,7 +328,7 @@
         </section>
         <!--====== End Place Section ======-->
         <!--====== Start Download Section ======-->
-        <section class="download-app">
+        {% comment %} <section class="download-app">
             <div class="download-wrapper-one pt-115">
                 <div class="container">
                     <div class="row">
@@ -398,7 +402,8 @@
                     </div>
                 </div>
             </div>
-        </section><!--====== End Download Section ======-->
+        </section> {% endcomment %}
+        <!--====== End Download Section ======-->
         <!--====== Start Popular Listing Section ======-->
         <section class="listing-grid-area pt-75 pb-110">
             <div class="container">
@@ -479,7 +484,7 @@
         <!--====== End Popular Listing Section ======-->
         <!--====== Start Intro Video Section ======-->
         <section class="intro-video">
-            <div class="intro-wrapper-one bg_cover pt-115" style="background-image: url(assets/images/bg/video-bg-1.jpg);">
+            <div class="intro-wrapper-one bg_cover pt-115" style="background-image: url('{% static 'assets/images/bg/yt.jpg' %}');">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-5">

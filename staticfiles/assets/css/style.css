@@ -1286,7 +1286,7 @@ button {
 .hero-wrapper-one:after {
   width: 43.5%;
   right: 0;
-  background: url(../images/hero/lucy.jpg) no-repeat center center;
+  background: url(static/images/lucy.jpg) no-repeat center center;
   background-size: cover;
 }
 @media (max-width: 991px) {
@@ -1297,7 +1297,7 @@ button {
 .hero-wrapper-one:before {
   width: 56.5%;
   left: 0;
-  background: url(../images/hero/hero-one-bg-1.jpg) no-repeat center center;
+  background: url(static/images/hero/lucy.jpg) no-repeat center center;
   background-size: cover;
 }
 @media (max-width: 991px) {
