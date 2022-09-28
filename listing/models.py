@@ -29,6 +29,9 @@ class StatePage(models.Model):
         self.slug = slugify(self.stateName)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("state", kwargs={"slug": self.slug})
+
 class City(models.Model):
     cityName = models.CharField(max_length=255 , blank=True, null=True)
     slug =  models.SlugField(unique=True , max_length=255 , null=True , blank=True)
@@ -40,7 +43,9 @@ class City(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.cityName)
         super().save(*args, **kwargs)
-
+        
+    def get_absolute_url(self):
+        return reverse("city", kwargs={"slug": self.slug})
 
 class BlogCategory(models.Model):
     title = models.CharField(max_length=255)
@@ -73,6 +78,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+    def get_absolute_url(self):
+        return reverse("single_view", kwargs={"slug": self.slug})
 
 class BusinessDetails(models.Model):
     title = models.CharField(max_length=500 , blank=True , null=True)
@@ -89,7 +96,8 @@ class BusinessDetails(models.Model):
     country = models.ForeignKey(CountryPage ,on_delete=models.SET_NULL , blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.SET , blank=True, null=True)
     time = models.CharField(max_length=2000 , blank=True , null=True)
-   
+    created = models.DateField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now = True)
     def __str__(self):
        return self.title
     

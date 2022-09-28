@@ -2,9 +2,12 @@ from calendar import MONDAY
 from django.shortcuts import render ,get_object_or_404
 from .models import *
 from django.db.models import Count
-# Create your views here.
 from django.views.generic.detail import DetailView
+# Create your views here.
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication 
 
+from django.contrib.auth.models import User
 
 def home_view(request):
     city_count = StatePage.objects.annotate(num_of_city=Count('city'))
@@ -121,3 +124,7 @@ class Businessviewset(viewsets.ModelViewSet):
 
      serializer_class = SnippetSerializer
      queryset = BusinessDetails.objects.all()
+     authentication_classes = [TokenAuthentication]
+     permission_classes = [IsAuthenticated]
+
+
